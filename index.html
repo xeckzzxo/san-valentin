@@ -167,6 +167,41 @@ opacity:0.9;
 animation:float 3s ease-in-out infinite;
 }
 
+/* Estilos para la propuesta */
+.propuesta{
+margin-top:30px;
+background:#fff0f6;
+color:#d63384;
+padding:30px;
+border-radius:30px;
+box-shadow:0 0 40px rgba(255,105,180,0.6);
+font-family:'Dancing Script',cursive;
+font-size:22px;
+border:4px dashed #ffb6c1;
+display:none;
+}
+
+.propuesta h2{
+color:#e91e63;
+}
+
+.botones{
+margin-top:20px;
+position:relative;
+}
+
+#btnSi{
+background:linear-gradient(45deg,#ff9ecf,#ff6ec4);
+margin:10px;
+}
+
+#btnNo{
+background:#ccc;
+color:#666;
+position:absolute;
+margin:10px;
+}
+
 </style>
 </head>
 <body>
@@ -189,6 +224,14 @@ animation:float 3s ease-in-out infinite;
 <img src="foto3.jpg">
 </div>
 
+<div class="propuesta" id="propuesta">
+<h2 style="font-family:'Dancing Script',cursive; color:#e91e63;">¿Quieres ser mi San Valentín, mi Sheccid? 💕</h2>
+<div class="botones">
+<button id="btnSi" onclick="acepto()">Sí 💕</button>
+<button id="btnNo" onmouseover="moverNo()">No 😢</button>
+</div>
+</div>
+
 </div>
 
 <div class="modal" id="modal" onclick="cerrarModal()">
@@ -204,6 +247,7 @@ animation:float 3s ease-in-out infinite;
 function iniciar(){
 document.getElementById("carta").style.display="block";
 document.getElementById("carrusel").style.display="block";
+document.getElementById("propuesta").style.display="block";
 document.getElementById("musica").play();
 crearCorazones();
 escribirTexto();
@@ -260,6 +304,7 @@ document.getElementById("modal").style.display="flex";
 });
 });
 
+
 setInterval(()=>{
 imagenes[index].classList.remove("active");
 index = (index + 1) % imagenes.length;
@@ -269,6 +314,19 @@ imagenes[index].classList.add("active");
 
 function cerrarModal(){
 document.getElementById("modal").style.display="none";
+}
+
+function moverNo(){
+let boton = document.getElementById("btnNo");
+let x = Math.random() * 200;
+let y = Math.random() * 50;
+boton.style.left = x + "px";
+boton.style.top = y + "px";
+}
+
+function acepto(){
+crearCorazones();
+alert("Sabía que dirías que sí 💕 Te amo mucho 😊");
 }
 
 </script>
