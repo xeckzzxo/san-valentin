@@ -3,151 +3,275 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para Dayi 💗</title>
+<title>Para Dayi 🎀</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@400;700&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+
 <style>
-body{
+
+*{
 margin:0;
-font-family:'Segoe UI',sans-serif;
-text-align:center;
-background:linear-gradient(to bottom,#ffd6ec,#fff0f6);
-overflow:hidden;
+padding:0;
+box-sizing:border-box;
 }
 
-h1{
-margin-top:60px;
-color:#ff4da6;
-font-size:28px;
-}
-
-p{
-color:#7a3b69;
-font-size:18px;
-padding:0 20px;
-}
-
-button{
-padding:12px 25px;
-margin:15px;
-border:none;
-border-radius:30px;
-font-size:16px;
-cursor:pointer;
-transition:0.3s;
-}
-
-#yes{
-background:#ff66b2;
+body{
+min-height:100vh;
+font-family:'Quicksand',sans-serif;
+background: url("fondo.png") center/cover no-repeat fixed;
+display:flex;
+flex-direction:column;
+align-items:center;
+overflow-x:hidden;
 color:white;
 }
 
-#no{
-background:#ffcce6;
-color:#7a3b69;
-position:relative;
+.overlay{
+position:fixed;
+width:100%;
+height:100%;
+background:linear-gradient(to bottom, rgba(255,182,193,0.6), rgba(255,105,180,0.7));
+backdrop-filter: blur(4px);
+z-index:-1;
 }
 
-.lily{
-position:absolute;
-font-size:24px;
-animation:fall 10s linear infinite;
+.container{
+text-align:center;
+padding:40px 20px;
+animation:fadeIn 2s ease;
+max-width:600px;
 }
 
-@keyframes fall{
-0%{transform:translateY(-100px);}
-100%{transform:translateY(100vh);}
+h1{
+font-family:'Great Vibes',cursive;
+font-size:60px;
+text-shadow:0 0 25px #ffb6c1;
+animation:float 4s ease-in-out infinite;
 }
 
-.hidden{
-display:none;
+h2{
+font-family:'Dancing Script',cursive;
+font-size:28px;
+margin:10px 0;
 }
 
-#photos{
-margin-top:30px;
-}
-
-img{
-width:140px;
-border-radius:20px;
-margin:10px;
-}
-
-#heart{
-font-size:40px;
-color:red;
-animation:beat 1s infinite;
-}
-
-@keyframes beat{
-0%{transform:scale(1);}
-50%{transform:scale(1.3);}
-100%{transform:scale(1);}
-}
-
-#secret{
-margin-top:20px;
+.fecha{
+font-family:'Quicksand',sans-serif;
 font-size:16px;
-color:#a6005c;
+opacity:0.9;
+margin-bottom:15px;
+}
+
+button{
+padding:15px 40px;
+border:none;
+border-radius:50px;
+background:linear-gradient(45deg,#ff9ecf,#ff6ec4);
+color:white;
+font-size:18px;
+cursor:pointer;
+transition:0.4s;
+box-shadow:0 0 25px rgba(255,255,255,0.6);
+font-weight:bold;
+}
+
+button:hover{
+transform:scale(1.1);
+}
+
+.carta{
+margin-top:30px;
+background:#fff0f6;
+color:#d63384;
+padding:30px;
+border-radius:30px;
+box-shadow:0 0 40px rgba(255,105,180,0.6);
+font-family:'Dancing Script',cursive;
+font-size:22px;
+border:4px dashed #ffb6c1;
+white-space:pre-line;
 display:none;
 }
+
+/* Carrusel */
+.carrusel{
+margin-top:40px;
+position:relative;
+width:100%;
+max-width:350px;
+overflow:hidden;
+border-radius:25px;
+box-shadow:0 0 25px rgba(255,105,180,0.7);
+display:none;
+}
+
+.carrusel img{
+width:100%;
+display:none;
+cursor:pointer;
+}
+
+.carrusel img.active{
+display:block;
+animation:fadeIn 1s ease;
+}
+
+/* Modal */
+.modal{
+position:fixed;
+display:none;
+justify-content:center;
+align-items:center;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.8);
+}
+
+.modal img{
+max-width:90%;
+max-height:80%;
+border-radius:20px;
+}
+
+/* Corazones */
+.heart{
+position:absolute;
+color:#ff69b4;
+font-size:20px;
+animation:floatHeart 6s linear infinite;
+}
+
+@keyframes floatHeart{
+0%{transform:translateY(0);opacity:1;}
+100%{transform:translateY(-800px);opacity:0;}
+}
+
+@keyframes fadeIn{
+from{opacity:0;}
+to{opacity:1;}
+}
+
+@keyframes float{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-10px);}
+}
+
+.melody{
+position:fixed;
+bottom:20px;
+right:20px;
+width:100px;
+opacity:0.9;
+animation:float 3s ease-in-out infinite;
+}
+
 </style>
 </head>
 <body>
 
-<h1>Para mi hermosa Dayi 💗</h1>
+<div class="overlay"></div>
 
-<p>
-Desde aquel 3 de julio algo cambió en mi corazón...  
-Y hoy quiero preguntarte algo muy especial.
-</p>
+<div class="container">
+<h1>Para Dayi 🎀</h1>
+<h2>De Xeckzz 💕</h2>
+<div class="fecha">3 de julio 💖</div>
+<button onclick="iniciar()">Abrir sorpresa 💌</button>
 
-<h2 style="color:#ff3399;">¿Quieres ser mi San Valentín, Dayi?</h2>
-
-<button id="yes">Sí 💖</button>
-<button id="no">No 🙈</button>
-
-<div id="photos" class="hidden">
-<img src="anime.jpg">
-<span id="heart">❤️</span>
-<img src="real.jpg">
-<p id="secret">
-puedo esperar los años que sean necesarios para estar juntos,  
-no me importa la distancia mi niña,  
-lo que me importa es que nos sigamos amando siempre,  
-te amo mi Dayi, eres lo mejor que me ha pasado en la vida 💗
-</p>
+<div class="carta" id="carta">
+<span id="texto"></span>
 </div>
 
-<!-- Música -->
-<audio id="music" autoplay loop>
-<source src="musica.mp3" type="audio/mpeg">
-</audio>
+<div class="carrusel" id="carrusel">
+<img src="foto1.jpg" class="active">
+<img src="foto2.jpg">
+<img src="foto3.jpg">
+</div>
+
+</div>
+
+<div class="modal" id="modal" onclick="cerrarModal()">
+<img id="imagenGrande">
+</div>
+
+<audio id="musica" src="musica.mp3"></audio>
+
+<img src="mymelody.png" class="melody">
 
 <script>
-// lirios
-for(let i=0;i<20;i++){
-let lily=document.createElement("div");
-lily.classList.add("lily");
-lily.innerHTML="🌸";
-lily.style.left=Math.random()*100+"vw";
-lily.style.animationDuration=(5+Math.random()*5)+"s";
-document.body.appendChild(lily);
+
+function iniciar(){
+document.getElementById("carta").style.display="block";
+document.getElementById("carrusel").style.display="block";
+document.getElementById("musica").play();
+crearCorazones();
+escribirTexto();
+iniciarCarrusel();
 }
 
-// botón no se mueve
-let no=document.getElementById("no");
-no.addEventListener("mouseover",()=>{
-no.style.position="absolute";
-no.style.top=Math.random()*80+"vh";
-no.style.left=Math.random()*80+"vw";
+function crearCorazones(){
+for(let i=0;i<30;i++){
+let heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="💗";
+heart.style.left=Math.random()*100+"vw";
+heart.style.top="100vh";
+heart.style.fontSize=(15+Math.random()*25)+"px";
+heart.style.animationDuration=(4+Math.random()*3)+"s";
+document.body.appendChild(heart);
+}
+}
+
+const mensaje = `Puedo esperar los años que sean necesarios para estar juntos,
+no me importa la distancia mi niña,
+lo que me importa es que nos sigamos amando siempre.
+
+Te amo mi Dayi,
+eres lo mejor que me ha pasado en la vida <3
+
+Siempre tuyo,
+Xeckzz 💕`;
+
+function escribirTexto(){
+let i = 0;
+let velocidad = 40;
+let textoElemento = document.getElementById("texto");
+
+function escribir(){
+if(i < mensaje.length){
+textoElemento.innerHTML += mensaje.charAt(i);
+i++;
+setTimeout(escribir, velocidad);
+}
+}
+
+escribir();
+}
+
+function iniciarCarrusel(){
+let index = 0;
+let imagenes = document.querySelectorAll(".carrusel img");
+
+imagenes.forEach(img=>{
+img.addEventListener("click",function(){
+document.getElementById("imagenGrande").src = this.src;
+document.getElementById("modal").style.display="flex";
+});
 });
 
-// botón sí
-document.getElementById("yes").addEventListener("click",()=>{
-document.getElementById("photos").classList.remove("hidden");
-document.getElementById("secret").style.display="block";
-});
+setInterval(()=>{
+imagenes[index].classList.remove("active");
+index = (index + 1) % imagenes.length;
+imagenes[index].classList.add("active");
+},3000);
+}
+
+function cerrarModal(){
+document.getElementById("modal").style.display="none";
+}
+
 </script>
 
 </body>
 </html>
-
