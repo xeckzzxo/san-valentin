@@ -27,40 +27,46 @@ background:linear-gradient(to bottom, rgba(255,182,193,0.6), rgba(255,105,180,0.
 backdrop-filter: blur(4px);z-index:-1;
 }
 
-.container{text-align:center;padding:40px 20px;max-width:600px;}
+.container{
+text-align:center;
+padding:30px 15px;
+max-width:600px;
+width:100%;
+}
 
 h1{
 font-family:'Great Vibes',cursive;
-font-size:60px;
+font-size:clamp(40px,8vw,60px);
 text-shadow:0 0 25px #ffb6c1;
 animation:float 4s ease-in-out infinite;
 }
 
-h2{font-family:'Dancing Script',cursive;font-size:28px;margin:10px 0;}
-.fecha{font-size:16px;opacity:0.9;margin-bottom:15px;}
+h2{font-family:'Dancing Script',cursive;font-size:clamp(22px,5vw,28px);margin:10px 0;}
+.fecha{font-size:14px;opacity:0.9;margin-bottom:15px;}
 
 button{
-padding:15px 40px;border:none;border-radius:50px;
+padding:14px 28px;border:none;border-radius:50px;
 background:linear-gradient(45deg,#ff9ecf,#ff6ec4);
-color:white;font-size:18px;cursor:pointer;
-transition:0.4s;box-shadow:0 0 25px rgba(255,255,255,0.6);
+color:white;font-size:16px;cursor:pointer;
+transition:0.3s;box-shadow:0 0 20px rgba(255,255,255,0.6);
 font-weight:bold;
 }
-button:hover{transform:scale(1.1);}
+button:active{transform:scale(0.95);}
 
 .carta{
-margin-top:30px;background:#fff0f6;color:#d63384;
-padding:30px;border-radius:30px;
-box-shadow:0 0 40px rgba(255,105,180,0.6);
-font-family:'Dancing Script',cursive;font-size:22px;
-border:4px dashed #ffb6c1;white-space:pre-line;display:none;
+margin-top:25px;background:#fff0f6;color:#d63384;
+padding:22px;border-radius:25px;
+box-shadow:0 0 30px rgba(255,105,180,0.6);
+font-family:'Dancing Script',cursive;
+font-size:20px;border:4px dashed #ffb6c1;
+white-space:pre-line;display:none;
 animation:fadeIn 1.5s ease;
 }
 
 .carrusel{
-margin-top:40px;position:relative;width:100%;max-width:350px;
-overflow:hidden;border-radius:25px;
-box-shadow:0 0 25px rgba(255,105,180,0.7);
+margin-top:30px;position:relative;width:100%;max-width:320px;
+overflow:hidden;border-radius:20px;
+box-shadow:0 0 20px rgba(255,105,180,0.7);
 display:none;
 }
 
@@ -70,7 +76,7 @@ display:none;
 .modal{
 position:fixed;display:none;justify-content:center;align-items:center;
 top:0;left:0;width:100%;height:100%;
-background:rgba(0,0,0,0.8);
+background:rgba(0,0,0,0.85);
 }
 
 .modal img{max-width:90%;max-height:80%;border-radius:20px;}
@@ -81,182 +87,4 @@ background:rgba(0,0,0,0.8);
 0%{transform:translateY(0);opacity:1;}
 100%{transform:translateY(-800px);opacity:0;}
 }
-
-@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
-@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
-
-.melody{position:fixed;bottom:20px;right:20px;width:100px;opacity:0.9;animation:float 3s ease-in-out infinite;}
-
-.propuesta{
-margin-top:30px;background:#fff0f6;color:#d63384;
-padding:30px;border-radius:30px;
-box-shadow:0 0 40px rgba(255,105,180,0.6);
-font-family:'Dancing Script',cursive;font-size:22px;
-border:4px dashed #ffb6c1;
-}
-
-.botones{margin-top:20px;position:relative;}
-#btnNo{background:#ccc;color:#666;position:absolute;}
-
-/* PANTALLA FINAL */
-.final{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:radial-gradient(circle,#ff9ecf,#ff4da6);
-display:flex;
-justify-content:center;
-align-items:center;
-flex-direction:column;
-z-index:10;
-opacity:0;
-pointer-events:none;
-transition:opacity 1s ease;
-}
-
-.final.show{
-opacity:1;
-pointer-events:auto;
-}
-
-.final h1{
-font-size:80px;
-font-family:'Great Vibes',cursive;
-text-shadow:0 0 40px white;
-animation:latido 1.5s infinite;
-}
-
-@keyframes latido{
-0%,100%{transform:scale(1);}
-50%{transform:scale(1.1);}
-}
-</style>
-</head>
-
-<body>
-
-<div class="overlay"></div>
-
-<div class="container">
-<h1>Para Dayi 🎀</h1>
-<h2>De Xeckzz 💕</h2>
-<div class="fecha">3 de julio 💖</div>
-
-<div class="propuesta" id="propuesta">
-<h2>¿Quieres ser mi San Valentín, mi Sheccid? 💕</h2>
-<div class="botones">
-<button id="btnSi" onclick="acepto()">Sí 💕</button>
-<button id="btnNo" onmouseover="moverNo()">No 😢</button>
-</div>
-</div>
-
-<div class="carta" id="carta">
-<span id="texto"></span>
-</div>
-
-<div class="carrusel" id="carrusel">
-<img src="foto1.jpg" class="active">
-<img src="foto2.jpg">
-<img src="foto3.jpg">
-</div>
-</div>
-
-<div class="modal" id="modal" onclick="cerrarModal()">
-<img id="imagenGrande">
-</div>
-
-<div class="final" id="final">
-<h1>TE AMO 💖</h1>
-<p style="font-size:24px;margin-top:10px;">Para siempre 💕</p>
-</div>
-
-<audio id="musica" src="musica.mp3"></audio>
-<img src="mymelody.png" class="melody">
-
-<script>
-
-function acepto(){
-document.getElementById("propuesta").style.display="none";
-document.getElementById("carta").style.display="block";
-document.getElementById("carrusel").style.display="block";
-document.getElementById("musica").play();
-
-crearCorazones();
-escribirTexto();
-iniciarCarrusel();
-
-setTimeout(mostrarFinal,9000);
-}
-
-function mostrarFinal(){
-document.getElementById("final").classList.add("show");
-crearCorazones();
-}
-
-function crearCorazones(){
-for(let i=0;i<30;i++){
-let heart=document.createElement("div");
-heart.className="heart";
-heart.innerHTML="💗";
-heart.style.left=Math.random()*100+"vw";
-heart.style.top="100vh";
-heart.style.fontSize=(15+Math.random()*25)+"px";
-heart.style.animationDuration=(4+Math.random()*3)+"s";
-document.body.appendChild(heart);
-}
-}
-
-const mensaje = `Puedo esperar los años que sean necesarios para estar juntos,
-no me importa la distancia mi niña,
-lo que me importa es que nos sigamos amando siempre.
-
-Te amo mi Dayi,
-eres lo mejor que me ha pasado en la vida <3
-
-Siempre tuyo,
-Xeckzz 💕`;
-
-function escribirTexto(){
-let i=0;
-let textoElemento=document.getElementById("texto");
-function escribir(){
-if(i<mensaje.length){
-textoElemento.innerHTML+=mensaje.charAt(i);
-i++;
-setTimeout(escribir,40);
-}}
-escribir();
-}
-
-function iniciarCarrusel(){
-let index=0;
-let imagenes=document.querySelectorAll(".carrusel img");
-
-imagenes.forEach(img=>{
-img.addEventListener("click",function(){
-document.getElementById("imagenGrande").src=this.src;
-document.getElementById("modal").style.display="flex";
-});
-});
-
-setInterval(()=>{
-imagenes[index].classList.remove("active");
-index=(index+1)%imagenes.length;
-imagenes[index].classList.add("active");
-},3000);
-}
-
-function cerrarModal(){document.getElementById("modal").style.display="none";}
-
-function moverNo(){
-let boton=document.getElementById("btnNo");
-boton.style.left=Math.random()*200+"px";
-boton.style.top=Math.random()*50+"px";
-}
-
-</script>
-
-</body>
-</html>
+  
